@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مبتكر | تثبيت برنامج الشاشة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/esp-web-tools@10.2.1/dist/web/install-button.js?module"></script>
+<style>
+  :root {
+    --teal: #04938A;
+    --olive: #C8B21E;
+    --ink: #2B2B2B;
+    --muted: #6B6B6B;
+    --bg: #F6F3EC;
+    --card: #FFFFFF;
+    --line: #E6E0D4;
+    --warn-bg: #FFF6E0;
+    --warn-ink: #8A5A00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Cairo", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 28px 16px 48px; }
+  header { text-align: center; margin-bottom: 22px; }
+  header img {
+    width: 150px; height: auto;
+    background: #fff; border-radius: 24px; padding: 14px 18px;
+    border: 1px solid var(--line);
+  }
+  h1 { font-size: 26px; font-weight: 800; margin: 10px 0 2px; }
+  .sub { color: var(--muted); margin: 0; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 22px 22px;
+    margin-top: 16px;
+  }
+  .install {
+    text-align: center;
+    border: 2px solid var(--teal);
+  }
+  .install h2 { margin: 0 0 6px; font-size: 20px; }
+  .install p { margin: 0 0 16px; color: var(--muted); }
+
+  esp-web-install-button { display: inline-block; }
+  /* before the installer script loads, show only the button */
+  esp-web-install-button:not(:defined) [slot="unsupported"],
+  esp-web-install-button:not(:defined) [slot="not-allowed"] { display: none; }
+  .btn {
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    background: var(--teal);
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 54px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #036d66;
+    transition: transform .08s, box-shadow .08s;
+  }
+  .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #036d66; }
+  .bad {
+    background: var(--warn-bg);
+    color: var(--warn-ink);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-weight: 600;
+  }
+
+  ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+  ol.steps li {
+    counter-increment: s;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  ol.steps li:last-child { border-bottom: 0; }
+  ol.steps li::before {
+    content: counter(s);
+    flex: 0 0 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--olive);
+    color: #fff;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+  }
+  h3 { margin: 0 0 8px; font-size: 18px; }
+  .note { background: var(--warn-bg); color: var(--warn-ink); border-radius: 14px; padding: 12px 16px; margin-top: 16px; }
+  kbd {
+    font-family: inherit;
+    background: #EFEAE0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0 6px;
+    font-weight: 700;
+  }
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+  .en { direction: ltr; text-align: left; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="logo.png" alt="مبتكر MOBTAKER">
+    <h1>تثبيت برنامج الشاشة</h1>
+    <p class="sub">Smart Kids • الإصدار <span id="ver">1.1.1</span></p>
+  </header>
+
+  <section class="card install">
+    <h2>جاهز؟ وصّل الشاشة ثم اضغط تثبيت</h2>
+    <p>يستغرق التثبيت حوالي دقيقة</p>
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate" class="btn">تثبيت</button>
+      <div slot="unsupported" class="bad">
+        هذا المتصفح لا يدعم التثبيت. افتح هذه الصفحة في <b>Google Chrome</b> أو <b>Microsoft Edge</b> على كمبيوتر.
+      </div>
+      <div slot="not-allowed" class="bad">
+        يجب فتح الصفحة من رابطها على الإنترنت (https).
+      </div>
+    </esp-web-install-button>
+  </section>
+
+  <section class="card">
+    <h3>الخطوات</h3>
+    <ol class="steps">
+      <li><div>افتح هذه الصفحة في <b>Chrome</b> أو <b>Edge</b> على كمبيوتر (لا تعمل على الجوال).</div></li>
+      <li><div>وصّل الشاشة بالكمبيوتر بكيبل <b>USB-C</b> يدعم نقل البيانات.</div></li>
+      <li><div>اضغط <b>تثبيت</b>، واختر من القائمة المنفذ الذي ظهر (غالباً اسمه <b>USB</b> أو <b>COM</b>) ثم <b>Connect</b>.</div></li>
+      <li><div>اضغط <b>Install</b> ثم <b>Install</b> مرة أخرى للتأكيد، وانتظر حتى يكتمل الشريط. لا تفصل الكيبل.</div></li>
+      <li><div>عند ظهور <b>Installation complete</b> اضغط زر <kbd>RST</kbd> خلف الشاشة، فيظهر شعار مبتكر ثم شاشة الإعداد.</div></li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h3>إذا لم يتصل أو لم يظهر المنفذ</h3>
+    <ol class="steps">
+      <li><div>جرّب كيبلاً آخر، فبعض الكيابل للشحن فقط.</div></li>
+      <li><div>اضغط مطوّلاً زر <kbd>BOOT</kbd> خلف الشاشة، واضغط <kbd>RST</kbd> مرة واحدة، ثم اترك <kbd>BOOT</kbd>، وأعد الضغط على <b>تثبيت</b>.</div></li>
+      <li><div>أغلق أي برنامج آخر يستخدم الشاشة (مثل VS Code أو Arduino) ثم حاول مرة أخرى.</div></li>
+    </ol>
+    <div class="note">
+      ملاحظة: التثبيت من هذه الصفحة يمسح بيانات الشاشة (الاسم والمهام والنجوم) ويبدأ من جديد. لتحديث شاشة مستخدمة استعمل: الإعدادات ← التحديثات.
+    </div>
+  </section>
+
+  <section class="card en">
+    <b>English:</b> Open this page in Chrome or Edge on a computer, plug the screen in with a USB-C data cable,
+    press the green button, choose the port, then Install. When it says “Installation complete”, press RST on the back.
+    If the port does not appear: hold BOOT, press RST once, release BOOT, and try again.
+  </section>
+
+  <footer>© مبتكر MOBTAKER</footer>
+</div>
+<script>
+  // show the version written in manifest.json
+  fetch("manifest.json").then(r => r.json()).then(m => {
+    document.getElementById("ver").textContent = m.version;
+  }).catch(() => {});
+</script>
+</body>
+</html>
